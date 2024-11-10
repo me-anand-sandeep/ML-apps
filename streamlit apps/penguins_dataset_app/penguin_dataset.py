@@ -8,10 +8,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score
 from sklearn.ensemble import RandomForestClassifier
-import shap
-from streamlit_shap import st_shap
-import matplotlib.pyplot as plt
-import plotly.express as px
+
 
 
 st.write(""" 
@@ -23,7 +20,6 @@ The dataset is obtained from [Kaggle](https://www.kaggle.com/datasets/parulpande
 
 st.write("""---""")
 
-
 def download_dataset(path):
     od.download(path)
 
@@ -34,20 +30,10 @@ if st.sidebar.button('Download penguin data, only if its unavaillable', type = "
 
 df = pd.read_csv("palmer-archipelago-antarctica-penguin-data\penguins_size.csv")
 
-# Display head/ tail of the penguin dataset
-
-# st.markdown('## Display First five rows of uncleaned dataset')
-# st.dataframe(df.head(), use_container_width = True)
-
-
 df2 = df.copy()
 
 # https://stackoverflow.com/questions/40755680/how-to-reset-index-pandas-dataframe-after-dropna-pandas-dataframe
 df2.dropna(axis = 0, inplace = True, ignore_index = True)
-
-
-# st.markdown('## Display First five rows of cleaned dataset')
-# st.dataframe(df2.head(), use_container_width = True)
 
 print('\n**************  df2.isnull().any().sum()  ***************\n')
 # print('df2.isnull().any().sum(): ', df2.isnull().any().sum())
@@ -69,8 +55,6 @@ onehot_encoded_df = pd.DataFrame(onehot_encoded, columns = onehot_encoder.get_fe
 df3 = pd.concat([df3, onehot_encoded_df], axis = 1)
 
 # , sparse_output = False
-# print('onehot_encoded: \n', df3)
-# print('df3.isnull().any().sum(): ', df3.isnull().any().sum())
 
 # Drop the original categorical columns
 df3 = df3.drop(cat_col_to_encode, axis = 1)
@@ -95,11 +79,6 @@ y = le.transform(y)
 print('y transformed : \n', y)
 
 
-# split the dataset into train and test sets
-# from sklearn.model_selection import train_test_split
-# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=1)
-
-
 # define the model
 model = RandomForestClassifier()
 # fit on the training set
@@ -114,10 +93,6 @@ pickle.dump(model, open(filename, 'wb'))
 
 column_names = X.columns
 print(column_names)
-
-
-# st.markdown('## describe the input X')
-# st.dataframe(X.describe(), use_container_width = True)
 
 
 # User input sidebar
@@ -162,9 +137,6 @@ print('input_x: \n', input_x)
 
 st.subheader('Displaying Features selected by user')
 
-# if uploaded_file is not None:
-#     st.write(input_x)
-# else:
 st.write('**Selected raw features by users**')
 st.write(input_x)
 
@@ -214,14 +186,7 @@ st.write('**Predicted species is**','"', le.inverse_transform(y_hat)[0], '"', '*
 
 
 
-# https://stackoverflow.com/questions/68233466/shap-exception-additivity-check-failed-in-treeexplainer
-# Create Tree Explainer object that can calculate shap values
-
-# explainer = shap.TreeExplainer(loaded_model)
-# shap_values = explainer.shap_values(X)
-# st.write()
-# st.write('---')
-# st.header('Feature Importance')
-# explainer = shap.Explainer(loaded_model, X)
-# shap_values = explainer(X, y = y, check_additivity = False)
-# st.pyplot(shap.summary_plot(shap_values, feature_names = X.columns, plot_type = "bar"), bbox_inches = 'tight', dpi = 300, pad_inches = 0)
+# how to get/ generate requirements.txt
+# https://stackoverflow.com/questions/57907655/how-to-use-pipreqs-to-create-requirements-txt-file
+# pip install pipreqs
+# python -m pipreqs.pipreqs
