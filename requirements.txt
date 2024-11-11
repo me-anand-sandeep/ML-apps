@@ -4,4 +4,4 @@ opendatasets==0.1.22
 pandas==2.0.1
 scikit_learn==1.2.2
 streamlit==1.39.0
-
+setuptools==75.3.0
