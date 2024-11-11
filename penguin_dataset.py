@@ -27,7 +27,7 @@ st.write("""---""")
 #     download_dataset(path)
 
 
-df = pd.read_csv("palmer-archipelago-antarctica-penguin-data\penguins_size.csv")
+df = pd.read_csv("penguins_size.csv")
 
 # Display head/ tail of the penguin dataset
 
