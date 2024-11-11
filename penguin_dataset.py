@@ -1,7 +1,7 @@
+import streamlit as st
 import kaggle
 import pandas as pd
 import numpy as np
-import streamlit as st
 import opendatasets as od
 import pickle
 from sklearn.preprocessing import OneHotEncoder
