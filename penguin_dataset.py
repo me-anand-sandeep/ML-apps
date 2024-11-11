@@ -1,5 +1,4 @@
 import streamlit as st
-import kaggle
 import pandas as pd
 import numpy as np
 import opendatasets as od
@@ -20,12 +19,12 @@ The dataset is obtained from [Kaggle](https://www.kaggle.com/datasets/parulpande
 st.write("""---""")
 
 
-def download_dataset(path):
-    od.download(path)
+# def download_dataset(path):
+#     od.download(path)
 
-if st.sidebar.button('Download penguin data, only if its unavaillable', type = "primary"):
-    path = "https://www.kaggle.com/datasets/parulpandey/palmer-archipelago-antarctica-penguin-data?resource=download&select=penguins_size.csv"
-    download_dataset(path)
+# if st.sidebar.button('Download penguin data, only if its unavaillable', type = "primary"):
+#     path = "https://www.kaggle.com/datasets/parulpandey/palmer-archipelago-antarctica-penguin-data?resource=download&select=penguins_size.csv"
+#     download_dataset(path)
 
 
 df = pd.read_csv("palmer-archipelago-antarctica-penguin-data\penguins_size.csv")
