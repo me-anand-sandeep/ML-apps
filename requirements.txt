@@ -1,7 +1,8 @@
+setuptools==75.3.0
 streamlit==1.39.0
 kaggle==1.6.17
 numpy==1.25.2
 opendatasets==0.1.22
 pandas==2.0.1
 scikit_learn==1.2.2
-setuptools==75.3.0
+
